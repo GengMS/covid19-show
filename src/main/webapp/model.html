@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+  <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+  <META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+  <title>Document</title>
+  <link rel="stylesheet" href="./Plug/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <script src="./Plug/jquery-2.1.0.js"></script>
+  <script src="./Plug/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .geng-nav {
+      margin-bottom: 0px;
+    }
+  </style>
+</head>
+
+<body style="height: calc(100vh);">
+  <nav class="navbar navbar-default geng-nav">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">后台管理</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav geng-navbar">
+          <li class="active" onclick="goPage('./news_revise.html',1)"><a href="#">新闻页信息管理 </a></li>
+          <li onclick="goPage('./covid19_revise.html',2)"><a href="#">疫情数据页信息管理</a></li>
+          <li onclick="goPage('./rumors_revise.html',3)"><a href="#">谣言信息页信息管理</a></li>
+          <li onclick="goPage('./illness_revise.html',4)"><a href="#">健康知识页信息管理</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <iframe src="./news_revise.html" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+  <script>
+    function goPage(page, index) {
+      $("iframe").attr('src', page);
+      $(".geng-navbar>li").eq(index - 1).siblings().removeClass("active");
+      $(".geng-navbar>li").eq(index - 1).addClass("active")
+    }
+    $(window).resize(function () {
+      window.location.reload();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Plug/Swiper/swiper.min.css">
+    <link rel="stylesheet" href="./Plug/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="./Plug/jquery-2.1.0.js"></script>
+    <script src="./Plug/Swiper/swiper.min.js"></script>
+    <style>
+        .tabs {
+            padding: 10px 0 5px 0;
+        }
+
+        .tabs>a {
+            font-size: 14px;
+            color: black;
+            padding: 5px;
+        }
+
+        .tabs>.active {
+            background: skyblue;
+            color: white;
+            font-weight: bold;
+        }
+
+        .news_lun_revise_item {
+            position: relative;
+        }
+
+        .news_lun_revise_item i {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        #show,
+        #show2,
+        #show3,
+        #show4 {
+            width: 80px;
+            height: 80px;
+        }
+
+        #geng-swiper {
+            height: 300px;
+        }
+
+        #geng-swiper img {
+            height: 100%;
+            width: 100%;
+        }
+
+        #fix_load {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%);
+            padding: 6px;
+            border-radius: 4px;
+            background: white;
+            font-size: 14px;
+            z-index: 999;
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="container">
+    <div id="fix_load">
+        请求中……
+    </div>
+    <div class="tabs">
+        <a href="#" class="active">轮播图管理</a>
+        <a href="#" class="">轮播信息管理</a>
+        <a href="#" class="">时评管理</a>
+    </div>
+    <hr>
+    <div class="new_revise_con swiper-container swiper-container-initialized swiper-container-horizontal"
+        style="width:100%; height: auto;">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div>
+                    <h3>预览</h3>
+                </div>
+                <div
+                    class="swiper-container swiper-container2 swiper-container-initialized swiper-container-horizontal">
+                    <!-- 首页轮播 -->
+                    <!-- =---------------------------首页轮播---------------------------------- -->
+                    <div class="swiper-wrapper" id="geng-swiper">
+                        <div class="swiper-slide">加载中</div>
+                        <div class="swiper-slide">加载中</div>
+                        <div class="swiper-slide">加载中</div>
+                        <div class="swiper-slide">加载中</div>
+                        <div class="swiper-slide">加载中</div>
+                        <div class="swiper-slide">加载中</div>
+                        <div class="swiper-slide">加载中</div>
+                        <div class="swiper-slide">加载中</div>
+                        <script>
+                            $.ajax({
+                                type: "POST",
+                                url: "/covid19-show/ListHomeRouling",
+                                dataType: "json",
+                                success: function (response) {
+                                    console.log(response.code)
+                                    if (response.code != 200) {
+                                        alert(response.message)
+                                    } else {
+                                        let content = ``;
+                                        for (let index = 0; index < response.data.length; index++) {
+                                            if (index == 0) {
+                                                content +=
+                                                    `<div class="swiper-slide swiper-slide-active"><img src="${response.data[index].imgUrl}" style="width: 100%;" alt=""></div>`
+                                            } else if (index == 1) {
+                                                content += ` <div class="swiper-slide swiper-slide-next">
+                            <img src="${response.data[index].imgUrl}" style="width: 100%;" alt="">
+                        </div>`
+                                            } else {
+                                                content += ` <div class="swiper-slide">
+                            <img src="${response.data[index].imgUrl}" style="width: 100%;" alt="">
+                        </div>`
+                                            }
+                                        }
+                                       
+                                        $("#geng-swiper").html(content);
+                                        console.log("-------")
+                                    }
+                                },
+                                error: function (response) {
+                                    console.log("error")
+                                    console.log(response)
+                                }
+                            });
+                        </script>
+                    </div>
+
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination Pagination1 swiper-pagination-fraction" style="color: white;"><span
+                            class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">10</span>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"
+                        aria-disabled="false"></div>
+                    <div class="swiper-button-prev swiper-button-disabled" tabindex="0" role="button"
+                        aria-label="Previous slide" aria-disabled="true"></div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+                <hr>
+                <div>
+                    <h3>修改</h3>
+                </div>
+                <div>
+                    <form action="/covid19-show/HomeRoulingUpdate" method="post" id="Form1">
+                        修改第<input type="number" name="rId" required class="form-control"
+                            style="display: inline-block; width: 36px;">张，图片;<br>
+                        图片修改为：<input type="file" id="news_revise_file" name="file" required id="" class="form-control">
+                        <img id="show" src="" alt=""><br>
+                        链接修改为：<input type="text" name="article" required class="form-control">
+                        <div style="display: flex; justify-content: center; margin-top: 10px;">
+                            <button type="submit" id="submit1" class="btn btn-success">提交</button>
+                        </div>
+
+                    </form>
+
+                </div>
+                <hr>
+                <div>
+                    <h3>增加</h3>
+                    <form action="/covid19-show/HomeRoulingSave" id="homeRoulingAddForm" method="post">
+
+                        新增图片为：<input type="file" id="news_revise_file2" name="file" required class="form-control">
+                        <img id="show2" src="" alt="" style="width: 80px; height: 80px;"><br>
+                        链接为：<input type="text" class="form-control" name="url" required>
+                        <div style="display: flex; justify-content: center; margin-top: 10px;">
+                            <button type="submit" id="homeRoulingAdd" class="btn btn-success">提交</button>
+                        </div>
+
+                    </form>
+                </div>
+                <hr>
+                <div>
+                    <h3>删除</h3>
+                    <form action="" method="post" id="delHomeRoulingForm">
+                        删除第<input type="number" name="index" required class="form-control"
+                            style="display: inline-block; width: 36px;">张，图片;<br>
+                        <div style="display: flex; justify-content: center; margin-top: 10px;">
+                            <button type="submit" id="delHomeRouling" class="btn btn-success">提交</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div id="roulingMessage">
+                    加载中……
+                </div>
+                <form action="" method="post" id="updateRoulingMessageForm">
+                    <div class="news_lun_revise_item">
+                        修改：
+                        <br>
+                        <label>
+                            索引:
+                            <input type="number" name="index" required class="form-control">
+
+                        </label>
+                        <label>
+                            标题：
+                            <input type="text" name="title" required class="form-control">
+                        </label>
+                        <label>
+                            内容：
+                            <input type="text" name="content" required class="form-control">
+                        </label>
+                    </div>
+                   
+
+                    <button type="submit" id="updateRoulingMessage" class="btn btn-success">修改</button>
+                    <hr>
+                </form>
+
+                <form action="" method="post" id="addRoulingMessageForm">
+                    <div class="news_lun_revise_item">
+                        增加：
+                        <br>
+                        <label>
+                            标题：
+                            <input type="text" name="title" required class="form-control">
+                        </label>
+                        <label>
+                            内容：
+                            <input type="text" name="content" required class="form-control">
+                        </label>
+                    </div>
+                   
+
+                    <button type="submit" id="addRoulingMessage" class="btn btn-success">增加</button>
+                    <hr>
+                </form>
+                <form action="" method="post" id="delRoulingMessageForm">
+                    <div class="news_lun_revise_item">
+                        删除：
+                       <br>
+                        <label>
+                            索引:
+                            <input type="number" name="index" required class="form-control">
+
+                        </label>
+                    </div>
+                    <button type="submit" id="delRoulingMessage" class="btn btn-success">删除</button>
+                    <hr>
+                </form>
+
+            </div>
+            <div class="swiper-slide">
+                <div>
+                    <form action="" method="post" id="saveHomeMessageForm">
+                        <h3>增加</h3>
+                        <label>
+                            标题：
+                            <input type="text" class="form-control" name="title" required maxlength="50"
+                                placeholder="标题">
+
+                        </label>
+                        <label>
+                            文章链接：
+                            <input type="text" class="form-control" name="artcleUrl" required placeholder="文章链接">
+                        </label>
+                        <label>
+                            封面图：
+                            <input type="file" class="form-control" name="file" required id="news_revise_file3">
+                            <img id="show3" src="" alt="">
+                        </label>
+                        <button type="submit" id="saveHomeMessage" class="btn btn-success">提交</button>
+                    </form>
+                </div>
+                <hr>
+                <div>
+                    <form action="" method="post" id="removeHomeArticleForm">
+                        <h3>删除</h3>
+                        <label>
+                            文章id
+                            <input type="number" name="id" required class="form-control" placeholder="文章Id">
+
+                        </label>
+                        <button type="submit" id="removeHomeArticle"  class="btn btn-success">提交</button>
+                    </form>
+                </div>
+                <hr>
+                <div>
+                    <form action="" method="post" id="updateHomeArticleForm">
+                        <h3>修改</h3>
+                        <label>
+                            文章id
+                            <input type="number" name="id" required class="form-control" placeholder="文章Id">
+
+                        </label>
+                        <label>
+                            标题：
+                            <input type="text" name="title" required class="form-control" maxlength="50"
+                                placeholder="标题">
+
+                        </label>
+                        <label>
+                            文章链接：
+                            <input type="text" name="articleUrl" required class="form-control" placeholder="文章链接">
+                        </label>
+                        <label>
+                            封面图：
+                            <input type="file" class="form-control" name="file" required id="news_revise_file4">
+                            <img id="show4" src="" alt="">
+                        </label>
+                        <button type="submit" id="updateHomeArticle" class="btn btn-success">提交</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <script src="./Js/news_revise.js"></script>
+</body>
+
+</html>

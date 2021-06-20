@@ -3,5 +3,5 @@
 
 页面展示：
 
-![image](https://github.com/bigdream6/covid19-show/screenshots/login.png)
+![image](screenshots/login.png)
 

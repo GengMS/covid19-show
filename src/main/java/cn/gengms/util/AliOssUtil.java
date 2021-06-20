@@ -16,8 +16,8 @@ public class AliOssUtil {
 	// Endpoint以杭州为例，其它Region请按实际情况填写。
 	private static final String endpoint = "https://oss-accelerate.aliyuncs.com";
 	// 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录RAM控制台创建RAM账号。
-	private static final String accessKeyId = 
-	private static final String accessKeySecret = 
+	private static final String accessKeyId = "LTAI5t6CEtWaCfNsA9NDodXF";
+	private static final String accessKeySecret = "xp39bYjF9dy6itQo5xVjRerBniOhHo";
 	private static final String bucketName = "521h";
 
 	public static String upload(Part file) throws IOException {

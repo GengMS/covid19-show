@@ -52,24 +52,24 @@ $.when( d1, d2 ).done(function ( v1, v2) {
 后台管理：
 <img src="screenshots/backEnd.png" alt="image" style="zoom:60%;" />
 
-<img src="screenshots\chinaData.png" alt="image" style="zoom:60%;" />
+<img src="screenshots/chinaData.png" alt="image" style="zoom:60%;" />
 
-<img src="screenshots\indexBanner.png" alt="image" style="zoom:60%;" />
+<img src="screenshots/indexBanner.png" alt="image" style="zoom:60%;" />
 
-<img src="screenshots\lunBo.png" alt="image" style="zoom:60%;" />
+<img src="screenshots/lunBo.png" alt="image" style="zoom:60%;" />
 
-<img src="screenshots\谣言.png" alt="image" style="zoom:60%;" />
+<img src="screenshots/谣言.png" alt="image" style="zoom:60%;" />
 
 展示页面：
 
-<img src="screenshots\index.png" alt="image" style="zoom:60%;" />
+<img src="screenshots/index.png" alt="image" style="zoom:60%;" />
 
-<img src="screenshots\china_data_index.png" alt="image" style="zoom:60%;" />
+<img src="screenshots/china_data_index.png" alt="image" style="zoom:60%;" />
 
-<img src="screenshots\china_data_index2.png" alt="image" style="zoom:60%;" />
+<img src="screenshots/china_data_index2.png" alt="image" style="zoom:60%;" />
 
-<img src="screenshots\world_data.png" alt="image" style="zoom:60%;" />
+<img src="screenshots/world_data.png" alt="image" style="zoom:60%;" />
 
-<img src="screenshots\yao.png" alt="image" style="zoom:60%;" />
+<img src="screenshots/yao.png" alt="image" style="zoom:60%;" />
 
-<img src="screenshots\knowledge.png" alt="image" style="zoom:60%;" />
+<img src="screenshots/knowledge.png" alt="image" style="zoom:60%;" />

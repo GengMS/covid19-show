@@ -1,6 +1,10 @@
 # covid19-show
 项目分后台管理和面向普通用户的疫情信息展示。
 
+后台可对疫情信息轮播图，轮播信息，热门新闻，国内外数据及疫情趋势图，谣言信息，防疫知识等板块进行增删改；利用阿里osss完成图片上传存储，easyExcel实现疫情数据模板和修改疫情数据的功能
+
+前端利用swpier.js来完成滑动切换板块及轮播图的设计，利用echart和highcharts来完成疫情趋势图和国内外疫情地图的设计，利用jq ajax来完成页面数据请求。
+
 用到技术栈：servlet+html+jq+ajax+echarts+highcharts+swiper.js
 
 后端依赖：

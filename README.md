@@ -1,5 +1,13 @@
 # covid19-show
+项目架构：HTML,CSS,JavaScript,jQuery,Servlet,aliOSS,JackSon,easyExcel,eCharts,highCharts,easyExcel,swiper.js
+
 项目分后台管理和面向普通用户的疫情信息展示。
+
+后台可对疫情信息轮播图，轮播信息，热门新闻，国内外数据及疫情趋势图，谣言信息，防疫知识等板块进行增删改；
+
+疫情展示页可展示当前热点新闻，国内外疫情数据，谣言信息，防疫知识。
+
+---
 
 后台可对疫情信息轮播图，轮播信息，热门新闻，国内外数据及疫情趋势图，谣言信息，防疫知识等板块进行增删改；利用阿里osss完成图片上传存储，easyExcel实现疫情数据模板和修改疫情数据的功能
 
